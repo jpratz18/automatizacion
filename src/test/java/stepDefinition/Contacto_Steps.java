@@ -28,7 +28,7 @@ public class Contacto_Steps {
 
     @After
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 
     @Given("Ingresamos a la pagina de contacto")
@@ -65,6 +65,26 @@ public class Contacto_Steps {
     public void se_muestra_la_pagina_del_correcto_ingreso_de_los_datos() {
         WebElement webElement = driver.findElement(By.xpath("//div[@id='contact_reply']/h1"));
         Assert.assertEquals(webElement.getText(), "Thank You for your Message!");
+    }
+
+    @When("Ingreso el nombre especifico {word}")
+    public void ingreso_el_nombre_especifico(String nombre) {
+        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys(nombre);
+    }
+
+    @When("Ingreso el apellido especifico {word}")
+    public void ingreso_el_apellido_especifico(String apellido) {
+        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys(apellido);
+    }
+
+    @When("Ingreso el email especifico {word}")
+    public void ingreso_el_email_especifico_juan_pratz_qacg_com(String email) {
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys(email);
+    }
+
+    @When("Ingreso el comentario especifico {string}")
+    public void ingreso_el_comentario_especifico(String comentario) {
+        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(comentario);
     }
 
 }
